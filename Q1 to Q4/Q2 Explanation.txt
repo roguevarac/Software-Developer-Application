@@ -1,6 +1,0 @@
-Q2 Explanation
-The SQL query string didn't quite fit with the 'memberCount' variable, so i used 'string.format' to make sure the 'memberCount' value was properly inserted into the query string.
-Then, handled database query result properly,by adding a check to see if the result of 'db.storeQuery' is not 'false' before I went ahead and fetched guild names. This way, I'm sure I'm not working with nothing.
-Implemented a 'while' loop to properly iterate over the result set and fetch each guild name using 'result.getString'.
-Made sure to free up the database result after I finished grabbing all the guild names to release resources and avoid memory leaks.
-And finally, added a message to print out if there were no small guilds found, providing feedback to the user.

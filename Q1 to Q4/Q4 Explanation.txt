@@ -1,4 +1,0 @@
-Q4 Explanation
-To fix the memory leak issue, i added a 'delete player' statement if loading the player failed. This ensures we clean up the memory we allocated for the player using 'new'.
-After loading the player, i made sure to add the player pointer to the game's player map using 'g_game.addPlayer', preventing memory leaks and allowing us to properly manage the player
-Finally, added a check to see if the player was newly created (not found in the player map). If so, I cleaned up the memory allocated for the player using 'delete'. This ensures we don't leave any memory hanging around if something goes wrong with creating the item.
