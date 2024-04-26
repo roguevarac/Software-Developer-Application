@@ -1,0 +1,32 @@
+void Game::addItemToPlayer(const std::string& recipient, uint16_t itemId)
+{
+    Player* player = g_game.getPlayerByName(recipient);
+
+    // If the player doesn't exist, try loading from storage
+    if (!player) {
+        player = new Player(nullptr);
+        if (!IOLoginData::loadPlayerByName(player, recipient)) {
+            delete player; // Clean up memory allocated for player
+            return;
+        }
+        // Store the player pointer in the game's player map
+        g_game.addPlayer(player->getName(), player);
+    }
+
+    Item* item = Item::CreateItem(itemId);
+    if (!item) {
+        // Clean up memory allocated for player if item creation fails
+        if (!g_game.getPlayerByName(recipient)) {
+            delete player;
+        }
+        return;
+    }
+
+    // Add item to player's inbox
+    g_game.internalAddItem(player->getInbox(), item, INDEX_WHEREEVER, FLAG_NOLIMIT);
+
+    // If the player is offline, save their data
+    if (player->isOffline()) {
+        IOLoginData::savePlayer(player);
+    }
+}
