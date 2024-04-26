@@ -1,0 +1,6 @@
+Q3 Explanation
+The original function name 'do_sth_with_PlayerParty' is not descriptive, so I renamed it to 'removePlayerFromParty' to crearly indicate its purpose.
+The variable 'membername' didn't really tell me much about what it was holding, changed it to 'playerName' to make it obvious.
+The loop was a bit confusing with the 'k, v' variables, refactored the loop to use 'pairs' directly with 'party:getMembers()'.
+The comparison 'v == Player(membername)' checks for object equality, wich may not work as intended, so i changed it to 'member:getName() == playerName' to compare player names properly. 
+And then, added print messages to indicate whether the player was succesfully removed from the party or not.

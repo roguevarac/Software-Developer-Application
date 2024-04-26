@@ -1,0 +1,7 @@
+P1: Explanation
+I moved the 'releaseStorage' outside of the 'onLogout', Separating this function out makes sense because it keeps things tidy. The 'releaseStorage' function's job is just to release storage, so it feels better to have it hanging out on its own instead of inside another function.
+Simplify the code by getting rid of the 'addEvent' call; since I'm directly calling 'releaseStorage' inside 'onLogout', theres no need to add another event.
+Created a separate function called 'checkStorageOnLogout' for checking and releasing storage, this improves code readability and maintainability.
+Renamed the function to 'checkStorageOnLogout' to make it clearer, 'addEvent' didn't really tell me much about what the function was doing. 
+Got rid of some unnecessary comments, when the code speaks for itself, extra comments clutter the code.
+And overall, made sure the code looked neat with consistent formatting and indentation, making it easier for the others developers to understand and modify it in the future.
